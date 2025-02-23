@@ -1,6 +1,6 @@
 # docker-phpvirtualbox
 
-Changed the phpVirtualBox Repo to [phpVirtualBox by BartekSz95](https://github.com/BartekSz95/phpvirtualbox/tree/main) as this includes the support for php 8.1 and VirtualBox 7.x.
+Changed the phpVirtualBox Repo to [phpVirtualBox by studnitskiy](https://github.com/studnitskiy/phpvirtualbox) as this includes the support for php 8.1 and VirtualBox 7.1.x.
 
 ## phpVirtualBox
 

@@ -1,11 +1,10 @@
 FROM alpine
-LABEL maintainer = "Christian Gatzlaff <cgatzlaff@gmail.com>"
+LABEL maintainer = "Joe Tsai <joe.tsai8207@gmail.com>"
 
-ARG PHP_VIRTUAL_BOX_RELEASE=main
-
-RUN apk update && apk add --no-cache bash nginx php81-fpm php81-cli php81-common php81-json php81-soap php81-simplexml php81-session \
-    && apk add --no-cache --virtual build-dependencies wget unzip \
-    && wget --no-check-certificate https://github.com/BartekSz95/phpvirtualbox/archive/${PHP_VIRTUAL_BOX_RELEASE}.zip -O phpvirtualbox.zip \
+# Git source https://github.com/jazzdd86/phpVirtualbox.git
+RUN apk --no-cache --update add bash tzdata nginx php83-fpm php83-cli php83-common php83-json php83-soap php83-simplexml php83-session \
+    && apk --no-cache --update add --virtual build-dependencies wget unzip \
+    && wget --no-check-certificate https://github.com/studnitskiy/phpvirtualbox/archive/refs/heads/main.zip -O phpvirtualbox.zip \
     && unzip phpvirtualbox.zip -d phpvirtualbox \
     && mkdir -p /var/www \
     && mv -v phpvirtualbox/*/* /var/www/ \
@@ -25,4 +24,6 @@ COPY servers-from-env.php /servers-from-env.php
 EXPOSE 80
 
 # write linked instances to config, then monitor all services
-CMD php81 /servers-from-env.php && php-fpm81 && nginx
+CMD php83 /servers-from-env.php && php-fpm83 && nginx
+
+
